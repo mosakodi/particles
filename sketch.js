@@ -9,6 +9,7 @@ let fullmoon = [];
 let disseminating = [];
 let lastquarter = [];
 let balsamic = [];
+let darkdark = [];
 
 function preload() {
   img1 = loadImage('assets/graph4.png');
@@ -26,12 +27,14 @@ function setup() {
  gibbous[1] = loadImage('assets/lausselmoon.png');
  fullmoon[0] = loadImage('assets/z1.png');
  fullmoon[1] = loadImage('assets/z2.png');
- disseminating[0] = loadImage('assets/catal1.png');
- disseminating[1] = loadImage('assets/catal2.png');
- lastquarter[0] = loadImage('assets/firstauthor.png');
- lastquarter[1] = loadImage('assets/firstauthorround.png');
- balsamic[0] = loadImage('assets/mothermary.png');
- balsamic[1] = loadImage('assets/lilith.png');
+ disseminating[0] = loadImage('assets/n1.png');
+ disseminating[1] = loadImage('assets/n2.png');
+ lastquarter[0] = loadImage('assets/catal1.png');
+ lastquarter[1] = loadImage('assets/catal2.png');
+ balsamic[0] = loadImage('assets/firstauthor.png');
+ balsamic[1] = loadImage('assets/firstauthorround.png');
+ darkdark[0] = loadImage('assets/mothermary.png');
+ darkdark[1] = loadImage('assets/lilith.png');
  textAlign(LEFT);
 
  for (var i = 0; i < 100; i++) {
@@ -122,7 +125,7 @@ function draw() {
   	}
 
   	if(angle < -90 && angle > -130){
-  		text('giving thanks: Grain Goddess of Catal Huyuk ~ 8,000 BCE', 10, 25);
+  		text('abstracting the female image: Venus of Neuchatel ~ 10,000 BCE', 10, 25);
   	}
 
   	if(angle < -135 && angle > -136){//trigger lastquarter
@@ -133,7 +136,7 @@ function draw() {
   	}
 
     if(angle < -135 && angle > -175){//trigger new moon
-  		text('Enheduanna, high priestess of the Mesopotemian moongod ~ 3,000 BCE', 10, 25);
+  		text('giving thanks: Grain Goddess of Catal Huyuk ~ 7,500 BCE', 10, 25);
   	}
 
   	if(angle < -180 && angle > -181){//trigger balsamic
@@ -143,7 +146,18 @@ function draw() {
   		}
   	}
 
-  	if(angle < -180 && angle > -220){
+  	if(angle < -180 && angle > -208){
+  		text('Enheduanna, high priestess of the Mesopotemian moongod ~ 3,000 BCE', 10, 25);
+  	}
+
+  	if(angle < -210 && angle > -211){//trigger darkdark
+  		print('respawn');
+  		for (var i = 0; i < particles.length; i++) {
+  			particles[i].respawn(8);
+  		}
+  	}
+
+  	if(angle < -210 && angle > -220){
   		text('biblical perspective: Lilith & Mother Mary ~ start of CE', 10, 25);
   	}
 
@@ -202,6 +216,9 @@ class Particle{
 			if(this.moonphase == 7){
 				image(balsamic[this.image], this.x, this.y, this.size, this.size);
 			}
+			if(this.moonphase == 8){
+				image(darkdark[this.image], this.x, this.y, this.size, this.size);
+			}
 		}
 	}
 
@@ -217,3 +234,4 @@ class Particle{
 		this.y = height/2;
 	}
 }
+
